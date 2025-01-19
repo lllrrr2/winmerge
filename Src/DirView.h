@@ -85,7 +85,7 @@ public:
 
 	void StartCompare(CompareStats *pCompareStats);
 	void Redisplay();
-	void RedisplayChildren(DIFFITEM *diffpos, int level, UINT &index, int &alldiffs);
+	int RedisplayChildren(DIFFITEM *diffpos, int level, UINT &index, int &alldiffs);
 	void UpdateResources();
 	void LoadColumnHeaderItems();
 	DIFFITEM *GetItemKey(int idx) const;
@@ -402,6 +402,8 @@ protected:
 	afx_msg void OnCustomDraw(NMHDR* pNMHDR, LRESULT* pResult);
 	afx_msg void OnSearch();
 	afx_msg void OnBeginDrag(NMHDR* pNMHDR, LRESULT* pResult);
+	afx_msg void OnStatusBarClick(NMHDR* pNMHDR, LRESULT* pResult);
+
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 	bool OnHeaderBeginDrag(LPNMHEADER hdr, LRESULT* pResult);

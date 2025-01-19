@@ -1,4 +1,9 @@
-﻿[CustomMessages]
+﻿[Messages]
+
+WizardInfoBefore=Licencinė sutartis
+InfoBeforeLabel=GNU Bendroji viešoji licencija
+
+[CustomMessages]
 
 ;Things we can also localize
 OptionalFeatures=Nebūtinos funkcijos:

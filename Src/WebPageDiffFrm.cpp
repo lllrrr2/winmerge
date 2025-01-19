@@ -536,12 +536,12 @@ int CWebPageDiffFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	for (int nPane = 0; nPane < m_pWebDiffWindow->GetPaneCount(); nPane++)
 	{
 		m_wndFilePathBar.SetActive(nPane, FALSE);
-		CreateWebWndStatusBar(m_wndStatusBar[nPane], CWnd::FromHandle(m_pWebDiffWindow->GetPaneHWND(nPane)));
+		//CreateWebWndStatusBar(m_wndStatusBar[nPane], CWnd::FromHandle(m_pWebDiffWindow->GetPaneHWND(nPane)));
 		UpdateHeaderPath(nPane);
 	}
 
-	CSize size = m_wndStatusBar[0].CalcFixedLayout(TRUE, TRUE);
-	m_rectBorder.bottom = size.cy;
+	//CSize size = m_wndStatusBar[0].CalcFixedLayout(TRUE, TRUE);
+	//m_rectBorder.bottom = size.cy;
 
 	CDockState pDockState;
 	pDockState.LoadState(_T("Settings-WebPageDiffFrame"));
@@ -647,7 +647,6 @@ void CWebPageDiffFrame::LoadOptions()
 
 void CWebPageDiffFrame::SaveOptions()
 {
-	//	GetOptionsMgr()->SaveOption(OPT_CMP_WEB_DIFFCOLORALPHA, static_cast<int>(m_pWebDiffWindow->GetDiffColorAlpha() * 100.0));
 	SIZE size = m_pWebDiffWindow->GetSize();
 	GetOptionsMgr()->SaveOption(OPT_CMP_WEB_VIEW_WIDTH, size.cx);
 	GetOptionsMgr()->SaveOption(OPT_CMP_WEB_VIEW_HEIGHT, size.cy);
@@ -655,6 +654,8 @@ void CWebPageDiffFrame::SaveOptions()
 	GetOptionsMgr()->SaveOption(OPT_CMP_WEB_SHOWDIFFERENCES, m_pWebDiffWindow->GetShowDifferences());
 	GetOptionsMgr()->SaveOption(OPT_CMP_WEB_ZOOM, static_cast<int>(m_pWebDiffWindow->GetZoom() * 1000));
 	GetOptionsMgr()->SaveOption(OPT_CMP_WEB_USER_AGENT, m_pWebDiffWindow->GetUserAgent());
+	GetOptionsMgr()->SaveOption(OPT_CMP_WEB_SYNC_EVENTS, m_pWebDiffWindow->GetSyncEvents());
+	GetOptionsMgr()->SaveOption(OPT_CMP_WEB_SYNC_EVENT_FLAGS, m_pWebDiffWindow->GetSyncEventFlags());
 }
 
 /**
@@ -831,9 +832,9 @@ void CWebPageDiffFrame::UpdateHeaderSizes()
 				w[pane] = rcMergeWindow.Width() / nPaneCount - 4;
 		}
 
-		if (!std::equal(m_nLastSplitPos, m_nLastSplitPos + nPaneCount - 1, w))
+		if (!std::equal(m_nLastSplitPos, m_nLastSplitPos + nPaneCount, w))
 		{
-			std::copy_n(w, nPaneCount - 1, m_nLastSplitPos);
+			std::copy_n(w, nPaneCount, m_nLastSplitPos);
 
 			// resize controls in header dialog bar
 			m_wndFilePathBar.Resize(w);
@@ -893,7 +894,7 @@ bool CWebPageDiffFrame::OpenUrls(IWebDiffCallback* callback)
 	for (int pane = 0; pane < m_filePaths.GetSize(); ++pane)
 	{
 		strTempFileName[pane] = m_filePaths[pane];
-		if (!m_infoUnpacker.Unpacking(&m_unpackerSubcodes[pane], strTempFileName[pane], filteredFilenames, {strTempFileName[pane]}))
+		if (!m_infoUnpacker.Unpacking(pane, &m_unpackerSubcodes[pane], strTempFileName[pane], filteredFilenames, {strTempFileName[pane]}))
 		{
 //			return false;
 		}
@@ -1574,7 +1575,7 @@ bool CWebPageDiffFrame::GenerateReport(const String& sFileName) const
 bool CWebPageDiffFrame::GenerateReport(const String& sFileName, std::function<void(bool)> callback) const
 {
 	String rptdir_full, rptdir, path, name, ext;
-	String url[3];
+	String title[3];
 	String diffrpt_filename[3];
 	String diffrpt_filename_full[3];
 	const wchar_t* pfilenames[3]{};
@@ -1585,7 +1586,7 @@ bool CWebPageDiffFrame::GenerateReport(const String& sFileName, std::function<vo
 
 	for (int pane = 0; pane < m_pWebDiffWindow->GetPaneCount(); ++pane)
 	{
-		url[pane] = ucr::toTString(m_pWebDiffWindow->GetCurrentUrl(pane));
+		title[pane] = m_strDesc[pane].empty() ? ucr::toTString(m_pWebDiffWindow->GetCurrentUrl(pane)) : m_strDesc[pane];
 		diffrpt_filename[pane] = strutils::format(_T("%s/%d.pdf"), rptdir, pane + 1);
 		diffrpt_filename_full[pane] = strutils::format(_T("%s/%d.pdf"), rptdir_full, pane + 1);
 		pfilenames[pane] = diffrpt_filename_full[pane].c_str();
@@ -1621,14 +1622,14 @@ bool CWebPageDiffFrame::GenerateReport(const String& sFileName, std::function<vo
 		_T("<table>\n")
 		_T("<tr>\n"));
 	for (int pane = 0; pane < m_pWebDiffWindow->GetPaneCount(); ++pane)
-		file.WriteString(strutils::format(_T("<th class=\"title\">%s</th>\n"), url[pane]));
+		file.WriteString(strutils::format(_T("<th class=\"title\">%s</th>\n"), title[pane]));
 	file.WriteString(_T("</tr>\n"));
 	file.WriteString(
 		_T("<tr>\n"));
 	for (int pane = 0; pane < m_pWebDiffWindow->GetPaneCount(); ++pane)
 		file.WriteString(
 			strutils::format(_T("<td><embed type=\"application/pdf\" src=\"%s\" title=\"%s\"></td>\n"),
-				diffrpt_filename[pane], diffrpt_filename[pane]));
+				paths::urlEncodeFileName(diffrpt_filename[pane]), diffrpt_filename[pane]));
 	file.WriteString(
 		_T("</tr>\n"));
 	file.WriteString(

@@ -53,6 +53,7 @@
 #define AppVersion GetFileVersion(SourcePath + "\..\..\Build\" + ARCH + "\Release\WinMergeU.exe")
 #define ShellExtensionVersion GetFileVersion(SourcePath + "..\..\Build\ShellExtension\" + ShellExtension64bit)
 #define WinMergeContextMenuVersion GetFileVersion(SourcePath + "..\..\Build\ShellExtension\x64\WinMergeContextMenu.dll")
+#define CurYear GetDateTimeString('yyyy', '', '')
 
 [Setup]
 AppName=WinMerge
@@ -62,6 +63,7 @@ AppPublisher=Thingamahoochie Software
 AppPublisherURL=https://WinMerge.org/
 AppSupportURL=https://WinMerge.org/
 AppUpdatesURL=https://WinMerge.org/
+AppCopyright=Copyright (c) 1996-{#CurYear} Dean P. Grimm / Thingamahoochie Software
 
 ; Installer executable's version resource info
 VersionInfoCompany=https://winmerge.org
@@ -164,11 +166,7 @@ Name: Ukrainian; MessagesFile: compiler:Languages\Ukrainian.isl,..\..\Translatio
 
 
 [Messages]
-English.FinishedLabel=Setup has finished installing WinMerge on your computer.
-English.SetupAppTitle=Setup - WinMerge {#AppVersion}
-English.WizardInfoBefore=License Agreement
-English.InfoBeforeLabel=GNU General Public License
-
+SetupWindowTitle=WinMerge {#AppVersion} {#ARCH}
 
 [Types]
 Name: typical; Description: {cm:TypicalInstallation}
@@ -586,17 +584,19 @@ Source: ..\..\Docs\users\GPL.rtf; DestDir: {app}\Docs\; Flags: comparetimestamp 
 Source: ..\..\Plugins\Plugins.xml; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
 Source: ..\..\Plugins\dlls\editor addin.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
 Source: ..\..\Plugins\dlls\insert datetime.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
+Source: ..\..\Plugins\dlls\CompareEscapedJavaPropertiesFiles.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
 Source: ..\..\Plugins\dlls\CompareMSExcelFiles.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
 Source: ..\..\Plugins\dlls\CompareMSWordFiles.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
 Source: ..\..\Plugins\dlls\CompareMSPowerPointFiles.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
 Source: ..\..\Plugins\dlls\CompareMSVisioFiles.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
 Source: ..\..\Plugins\dlls\ApplyPatch.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
 Source: ..\..\Plugins\dlls\PrediffLineFilter.sct; DestDir: {app}\MergePlugins; Flags: IgnoreVersion CompareTimeStamp; Components: Plugins
+Source: ..\..\Plugins\dlls\IgnoreLeadingLineNumbers.sct; DestDir: {app}\MergePlugins; Flags: ignoreversion replacesameversion; Components: Plugins
+Source: ..\..\Plugins\dlls\AI.sct; DestDir: {app}\MergePlugins; Flags: ignoreversion replacesameversion; Components: Plugins
 Source: ..\..\Plugins\dlls\{#ARCH}\IgnoreColumns.dll; DestDir: {app}\MergePlugins; Flags: ignoreversion replacesameversion; Components: Plugins
 Source: ..\..\Plugins\dlls\{#ARCH}\IgnoreCommentsC.dll; DestDir: {app}\MergePlugins; Flags: ignoreversion replacesameversion; Components: Plugins
 Source: ..\..\Plugins\dlls\{#ARCH}\IgnoreFieldsComma.dll; DestDir: {app}\MergePlugins; Flags: ignoreversion replacesameversion; Components: Plugins
 Source: ..\..\Plugins\dlls\{#ARCH}\IgnoreFieldsTab.dll; DestDir: {app}\MergePlugins; Flags: ignoreversion replacesameversion; Components: Plugins
-Source: ..\..\Plugins\dlls\IgnoreLeadingLineNumbers.sct; DestDir: {app}\MergePlugins; Flags: ignoreversion replacesameversion; Components: Plugins
 
 ;Frhed
 Source: ..\..\Build\{#ARCH}\Release\Frhed\GPL.txt; DestDir: {app}\Frhed; Components: Core
@@ -631,8 +631,8 @@ Source: ..\..\Build\msys2\*.*; DestDir: {app}\Commands\msys2; Flags: recursesubd
 Source: ..\..\Build\tidy-html5\bin\*.*; DestDir: {app}\Commands\tidy-html5; Flags: recursesubdirs; Components: Plugins
 Source: ..\..\Build\tidy-html5\tidy-html5-5.4.0\README\LICENSE.md; DestDir: {app}\Commands\tidy-html5; Flags: recursesubdirs; Components: Plugins
 ; jq
-Source: ..\..\Build\jq\jq-win32.exe; DestDir: {app}\Commands\jq; DestName: jq.exe; Flags: recursesubdirs; Components: Plugins
-Source: ..\..\Build\jq\jq-jq-1.7\COPYING; DestDir: {app}\Commands\jq; Flags: recursesubdirs; Components: Plugins
+Source: ..\..\Build\jq\jq-windows-i386.exe; DestDir: {app}\Commands\jq; DestName: jq.exe; Flags: recursesubdirs; Components: Plugins
+Source: ..\..\Build\jq\jq-jq-1.7.1\COPYING; DestDir: {app}\Commands\jq; Flags: recursesubdirs; Components: Plugins
 ; md4c
 Source: ..\..\Build\md4c\mingw32\bin\*.*; DestDir: {app}\Commands\md4c; Flags: recursesubdirs; Components: Plugins
 Source: ..\..\Build\md4c\mingw32\share\licenses\md4c\LICENSE.md; DestDir: {app}\Commands\md4c; Flags: recursesubdirs; Components: Plugins
@@ -787,7 +787,7 @@ Filename: {win}\Explorer.exe; Description: {cm:ViewStartMenuFolder}; Parameters:
 Filename: {app}\WinMergeU.exe; Description: {cm:LaunchProgram,WinMerge}; Flags: nowait postinstall skipifsilent runmaximized
 
 Filename: {sys}\regsvr32.exe; Parameters: "/s ""{app}\{#ShellExtension64bit}"""; Flags: waituntilterminated; Check: not IsWindows11OrLater
-Filename: {win}\sysnative\WindowsPowerShell\v1.0\PowerShell.exe; Parameters: "-c ""$host.ui.RawUI.WindowTitle = 'Registering WinMergeContextMenu package...'; if ((Get-AppxPackage -name WinMerge) -eq $null) {{ Add-AppxPackage \""{app}\WinMergeContextMenuPackage.msix\"" -ExternalLocation \""{app}\""}"""; Flags: waituntilterminated; Check: IsWindows11OrLater
+Filename: {win}\sysnative\WindowsPowerShell\v1.0\PowerShell.exe; Parameters: "-NoProfile -WindowStyle Hidden -c ""if ((Get-AppxPackage -name WinMerge) -eq $null) {{ Add-AppxPackage \""{app}\WinMergeContextMenuPackage.msix\"" -ExternalLocation \""{app}\""}"""; Flags: waituntilterminated; Check: IsWindows11OrLater
 
 [UninstallRun]
 Filename: {sys}\regsvr32.exe; Parameters: "/s /u ""{app}\{#ShellExtension64bit}"""; Flags: waituntilterminated
@@ -859,9 +859,14 @@ Begin
 End;
 
 Function OldGroup(): string;
+Var
+    carNoIcons: Cardinal;
 Begin
     {Stores where in \All Users\Programs\ our start menu used to be located}
-     RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WinMerge_is1', 'Inno Setup: Icon Group', Result)
+     RegQueryStringValue(HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WinMerge_is1', 'Inno Setup: Icon Group', Result);
+     carNoIcons := 0;
+     RegQueryDWORDValue(HKEY_LOCAL_MACHINE, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\WinMerge_is1', 'Inno Setup: No Icons', carNoIcons);
+     if carNoIcons <> 0 Then Result := '';
 End;
 
 Procedure DeletePreviousStartMenu();
@@ -904,8 +909,8 @@ Function UnregisterWinMergeContextMenuPackage: Boolean;
 var
   ResultCode: Integer;
 Begin;
-  if RegKeyExists(HKCU, 'SOFTWARE\Classes\PackagedCom\ClassIndex\{90340779-F37E-468E-9728-A2593498ED32}') then
-    Exec(ExpandConstant('{win}\sysnative\WindowsPowerShell\v1.0\PowerShell.exe'), '-c "$host.ui.RawUI.WindowTitle = ""Unregistering WinMergeContextMenu package...""; Get-AppxPackage -name WinMerge | Remove-AppxPackage"', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);  
+  if RegKeyExists(HKLM, 'SOFTWARE\Classes\PackagedCom\ClassIndex\{90340779-F37E-468E-9728-A2593498ED32}') then
+    Exec(ExpandConstant('{win}\sysnative\WindowsPowerShell\v1.0\PowerShell.exe'), '-NoProfile -WindowStyle Hidden -c "Get-AppxPackage -name WinMerge | Remove-AppxPackage"', '', SW_SHOW, ewWaitUntilTerminated, ResultCode);  
   Result := true;
 End;
 

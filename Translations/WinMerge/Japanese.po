@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: WinMerge\n"
 "Report-Msgid-Bugs-To: https://bugs.winmerge.org/\n"
 "POT-Creation-Date: 2020-12-05 22:07+0000\n"
-"PO-Revision-Date: 2023-12-30 17:50+0900\n"
+"PO-Revision-Date: 2024-11-20 08:45+0900\n"
 "Last-Translator: Takashi Sawanaka <sawanaka@d1.dion.ne.jp>\n"
 "Language-Team: Japanese <winmerge-translate@lists.sourceforge.net>\n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.5\n"
 
 #. LANGUAGE, SUBLANGUAGE
 msgid "LANG_ENGLISH, SUBLANG_ENGLISH_US"
@@ -60,6 +60,18 @@ msgstr "選択した行を左側にコピー"
 
 msgid "Copy Selected Line(s) from Left"
 msgstr "選択した行を左側からコピー"
+
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr "選択した差異(左側)をクリップボードへコピー\tCtrl+&1"
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr "選択した差異(右側)をクリップボードへコピー\tCtrl+&2"
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr "選択した差異(中央)をクリップボードへコピー\tCtrl+&2"
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr "選択した差異(右側)をクリップボードへコピー\tCtrl+&3"
 
 msgid "Select Line &Difference\tF4"
 msgstr "行内差異を選択(&D)\tF4"
@@ -216,6 +228,15 @@ msgstr "透明色を設定(&S)"
 msgid "&Vector Image Scaling"
 msgstr "ベクター画像スケーリング(&V)"
 
+msgid "&Animation Settings"
+msgstr "アニメーション設定(&A)"
+
+msgid "&Blink interval"
+msgstr "ブリンク周期(&B)"
+
+msgid "&Overlay animation interval"
+msgstr "オーバーレイアニメーション周期(&O)"
+
 msgid "Compare Extracted &Text From Images"
 msgstr "画像から抽出したテキストを比較(&T)"
 
@@ -336,11 +357,23 @@ msgstr "設定(&O)..."
 msgid "&View"
 msgstr "表示(&V)"
 
+msgid "Ta&b Bar"
+msgstr "タブ バー(&B)"
+
+msgid "&View Tab Bar"
+msgstr "タブ バーを表示(&V)"
+
+msgid "&On Title Bar"
+msgstr "タイトルバー上に配置(&O)"
+
 msgid "&Toolbar"
 msgstr "ツールバー(&T)"
 
 msgid "&Small"
 msgstr "小(&S)"
+
+msgid "&Medium"
+msgstr "中(&M)"
 
 msgid "&Big"
 msgstr "大(&B)"
@@ -348,11 +381,11 @@ msgstr "大(&B)"
 msgid "&Huge"
 msgstr "特大(&H)"
 
+msgid "Men&u Bar"
+msgstr "メニューバー(&U)"
+
 msgid "&Status Bar"
 msgstr "ステータス バー(&S)"
-
-msgid "Ta&b Bar"
-msgstr "タブ バー(&B)"
 
 msgid "&Tools"
 msgstr "ツール(&T)"
@@ -840,6 +873,12 @@ msgstr "比較前処理プラグインを適用(&D)..."
 msgid "&Transform with editor script..."
 msgstr "エディター スクリプトで変換(&T)..."
 
+msgid "Scripts for &copying"
+msgstr "コピー時適用エディタースクリプト(&C)"
+
+msgid "Select &editor script..."
+msgstr "エディタスクリプトの選択(&E)..."
+
 msgid "Sp&lit"
 msgstr "分割(&L)"
 
@@ -1061,6 +1100,9 @@ msgstr "数字を無視する(&B)"
 msgid "Ignore c&omment differences"
 msgstr "コメントの違いを無視する(&O)"
 
+msgid "Ignore &missing trailing EOL"
+msgstr "ファイル末尾の改行文字の有無を無視する(&E)"
+
 msgid "&Include subfolders"
 msgstr "サブフォルダーを含める(&I)"
 
@@ -1087,6 +1129,81 @@ msgstr "サイズのみ"
 
 msgid "&Load Project..."
 msgstr "プロジェクトを読み込み(&L)..."
+
+msgid "${*} - All arguments"
+msgstr "${*} - すべての引数"
+
+msgid "${1} - The first argument"
+msgstr "${1} - 最初の引数"
+
+msgid "${2} - The second argument"
+msgstr "${2} - 2番目の引数"
+
+msgid "${3} - The third argument"
+msgstr "${3} - 3番目の引数"
+
+msgid "${4} - The fourth argument"
+msgstr "${4} - 4番目の引数"
+
+msgid "${5} - The fifth argument"
+msgstr "${5} - 5番目の引数"
+
+msgid "${6} - The sixth argument"
+msgstr "${6} - 6番目の引数"
+
+msgid "${7} - The seventh argument"
+msgstr "${7} - 7番目の引数"
+
+msgid "${8} - The eighth argument"
+msgstr "${8} - 8番目の引数"
+
+msgid "${9} - The ninth argument"
+msgstr "${9} - 9番目の引数"
+
+msgid "${SRC_FILE} - Source file"
+msgstr "${SRC_FILE} - ソースファイル"
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr "${SRC_FOLDER} - ソースフォルダー"
+
+msgid "${SRC_URL} - Source URL"
+msgstr "${SRC_URL} - ソースURL"
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr "${SRC_URL_PROTOCOL} - ソースURLプロトコル"
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr "${SRC_URL_SUFFIX} - ソースURLサフィックス"
+
+msgid "${DST_FILE} - Destination file"
+msgstr "${DST_FILE} - 宛先ファイル"
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr "${DST_FOLDER} - 宛先フォルダー"
+
+msgid "${DST_URL} - Destination URL"
+msgstr "${DST_URL} - 宛先URL"
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr "${DST_URL_PROTOCOL} - 宛先URLプロトコル"
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr "${DST_URL_SUFFIX} - 宛先URLサフィックス"
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr "${WINMERGE_HOME} - WinMergeホームディレクトリ"
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr "${SCRIPT_FILE} - スクリプトファイル"
+
+msgid "Add &unpacker plugin..."
+msgstr "展開プラグインを追加(&U)..."
+
+msgid "Add &prediffer plugin..."
+msgstr "比較前処理プラグインを追加(&P)..."
+
+msgid "&Duplicate plugin..."
+msgstr "プラグインを複製(&D)..."
 
 msgid "About WinMerge"
 msgstr "WinMerge について"
@@ -1198,6 +1315,9 @@ msgstr "変更されたファイルの自動再読み込み(&R):"
 
 msgid "Language:"
 msgstr "言語:"
+
+msgid "Defaults"
+msgstr "デフォルト"
 
 msgid "Find"
 msgstr "検索"
@@ -1347,6 +1467,66 @@ msgstr "単語の差異:"
 msgid "Selected Word Diff:"
 msgstr "選択された単語の差異:"
 
+msgid "Dialog"
+msgstr "ダイアログ"
+
+msgid "Keywords:"
+msgstr "キーワード:"
+
+msgid "Function names:"
+msgstr "関数名:"
+
+msgid "Comments:"
+msgstr "コメント:"
+
+msgid "Numbers:"
+msgstr "数値:"
+
+msgid "Operators:"
+msgstr "オペレーター:"
+
+msgid "Strings:"
+msgstr "文字列:"
+
+msgid "Preprocessor:"
+msgstr "プリプロセッサ:"
+
+msgid "User 1:"
+msgstr "ユーザー 1:"
+
+msgid "User 2:"
+msgstr "ユーザー 2:"
+
+msgid "Bold"
+msgstr "太字"
+
+msgid "&Use customized text colors"
+msgstr "テキストの色をカスタマイズする(&U)"
+
+msgid "Whitespace:"
+msgstr "空白:"
+
+msgid "Regular text:"
+msgstr "標準テキスト:"
+
+msgid "Selection:"
+msgstr "選択:"
+
+msgid "Margin:"
+msgstr "マージン:"
+
+msgid "Search Marker:"
+msgstr "検索マーカー:"
+
+msgid "User Defined Marker1:"
+msgstr "ユーザー定義マーカー 1:"
+
+msgid "User Defined Marker2:"
+msgstr "ユーザー定義マーカー 2:"
+
+msgid "User Defined Marker3:"
+msgstr "ユーザー定義マーカー 3:"
+
 msgid "&Use folder compare colors"
 msgstr "フォルダー比較用の色を使用する(&U)"
 
@@ -1362,8 +1542,8 @@ msgstr "すべて存在しない項目:"
 msgid "Items filtered:"
 msgstr "無視された項目:"
 
-msgid "Margin:"
-msgstr "マージン:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
+msgstr "カスタムシステムカラーを使用する（一部のUI要素には適用されません）"
 
 msgid "System"
 msgstr "システム"
@@ -1428,9 +1608,6 @@ msgstr "コマンド行を含める(&D)"
 msgid "Open to e&xternal editor"
 msgstr "外部エディターで開く(&X)"
 
-msgid "Defaults"
-msgstr "デフォルト"
-
 msgid "Display Columns"
 msgstr "列の表示"
 
@@ -1446,20 +1623,14 @@ msgstr "追加プロパティ(&A)"
 msgid "Additional Properties"
 msgstr "追加プロパティ"
 
-msgid "&>"
-msgstr "&>"
-
-msgid "&<"
-msgstr "&<"
-
-msgid "<<"
-msgstr "<<"
-
 msgid "Select Plugin"
 msgstr "プラグインの選択"
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
 msgstr "プラグイン名(&N):"
+
+msgid "&Target files:"
+msgstr "対象ファイル(&T)"
 
 msgid "Extensions list:"
 msgstr "拡張子一覧:"
@@ -1476,11 +1647,11 @@ msgstr "拡張子を無視してすべてのプラグインを表示する"
 msgid "&Open files in the same window type after unpacking"
 msgstr "展開プラグイン適用後、ファイルを同じウインドウ タイプで開く(&O)"
 
-msgid "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
 msgstr "プラグイン パイプライン(&P):"
 
-msgid "&Add pipe"
-msgstr "パイプを追加(&A)"
+msgid "&Alias..."
+msgstr "エイリアス(&A)..."
 
 msgid "Stop"
 msgstr "停止"
@@ -1557,9 +1728,6 @@ msgstr "エディター"
 msgid "&Highlight syntax"
 msgstr "シンタックス ハイライトを有効にする(&H)"
 
-msgid "&Automatic rescan"
-msgstr "自動的に再スキャンする(&A)"
-
 msgid "&Preserve original EOL chars"
 msgstr "元の EOL 文字を保存する(&P)"
 
@@ -1575,6 +1743,15 @@ msgstr "タブを挿入(&I)"
 msgid "Insert &Spaces"
 msgstr "スペースを挿入(&S)"
 
+msgid "&Rendering Mode:"
+msgstr "レンダリングモード(&R):"
+
+msgid "&Automatic rescan"
+msgstr "自動的に再スキャンする(&A)"
+
+msgid "Copy &granularity for selected differences:"
+msgstr "選択された差異のコピー粒度(&G)"
+
 msgid "Line Difference Coloring"
 msgstr "行内差異の色付け"
 
@@ -1589,9 +1766,6 @@ msgstr "単語単位(&W):"
 
 msgid "W&ord break characters:"
 msgstr "単語区切り文字(&O)"
-
-msgid "&Rendering Mode:"
-msgstr "レンダリングモード(&R):"
 
 msgid "WinMerge allows hiding some common message boxes. Press the Reset button to make all message boxes visible again."
 msgstr "WinMerge は、いくつかの共通メッセージボックスを非表示にできます。すべてのメッセージボックスを再び表示させるには、[リセット] ボタンを押してください。"
@@ -1690,51 +1864,6 @@ msgstr "インポート..."
 
 msgid "Export..."
 msgstr "エクスポート..."
-
-msgid "Dialog"
-msgstr "ダイアログ"
-
-msgid "Keywords:"
-msgstr "キーワード:"
-
-msgid "Function names:"
-msgstr "関数名:"
-
-msgid "Comments:"
-msgstr "コメント:"
-
-msgid "Numbers:"
-msgstr "数値:"
-
-msgid "Operators:"
-msgstr "オペレーター:"
-
-msgid "Strings:"
-msgstr "文字列:"
-
-msgid "Preprocessor:"
-msgstr "プリプロセッサ:"
-
-msgid "User 1:"
-msgstr "ユーザー 1:"
-
-msgid "User 2:"
-msgstr "ユーザー 2:"
-
-msgid "Bold"
-msgstr "太字"
-
-msgid "Search Marker:"
-msgstr "検索マーカー:"
-
-msgid "User Defined Marker1:"
-msgstr "ユーザー定義マーカー 1:"
-
-msgid "User Defined Marker2:"
-msgstr "ユーザー定義マーカー 2:"
-
-msgid "User Defined Marker3:"
-msgstr "ユーザー定義マーカー 3:"
 
 msgid "Folder Compare Report"
 msgstr "フォルダー比較レポート"
@@ -1883,18 +2012,6 @@ msgstr "引用符内の改行を値として扱う(&A)"
 msgid "&Quote character:"
 msgstr "引用符文字(&Q)"
 
-msgid "&Use customized text colors"
-msgstr "テキストの色をカスタマイズする(&U)"
-
-msgid "Whitespace:"
-msgstr "空白:"
-
-msgid "Regular text:"
-msgstr "標準テキスト:"
-
-msgid "Selection:"
-msgstr "選択:"
-
 msgid "Backup Files"
 msgstr "バックアップ ファイル"
 
@@ -1952,6 +2069,9 @@ msgstr "プラグイン"
 msgid "&Enable plugins"
 msgstr "プラグインを有効にする(&E)"
 
+msgid "Plugin &type:"
+msgstr "プラグインの種類(&T):"
+
 msgid "File filters:"
 msgstr "ファイル フィルター:"
 
@@ -1959,7 +2079,7 @@ msgid "&Plugin arguments:"
 msgstr "プラグイン引数(&P):"
 
 msgid "Enable &automatic unpacking/prediffing for the plugin"
-msgstr "自動展開/自動比較前処理をこのプラグインで有効にする"
+msgstr "自動展開/自動比較前処理をこのプラグインで有効にする(&A)"
 
 msgid "Shell Integration"
 msgstr "シェル統合"
@@ -2079,6 +2199,36 @@ msgstr "ユーザー データ フォルダーをペイン毎に分離する(&S)
 
 msgid "&Hex View"
 msgstr "HEX 表示(&H)"
+
+msgid "Edit Plugin"
+msgstr "プラグインの編集"
+
+msgid "&Category:"
+msgstr "カテゴリー(&C)"
+
+msgid "&Menu caption:"
+msgstr "メニューキャプション(&M)"
+
+msgid "&Window type:"
+msgstr "ウインドウ種別(&W)"
+
+msgid "&Unpacked file extension:"
+msgstr "展開後のファイルの拡張子(&U):"
+
+msgid "&Require arguments"
+msgstr "引数を要求する(&R)"
+
+msgid "&Generate editor script"
+msgstr "エディタースクリプトを生成する(&G)"
+
+msgid "Command &line:"
+msgstr "コマンドライン(&L):"
+
+msgid "&Script file extension:"
+msgstr "スクリプトファイル拡張子(&S):"
+
+msgid "Script &body:"
+msgstr "スクリプト本体(&B):"
 
 msgid "EXT"
 msgstr "EXT"
@@ -2221,6 +2371,9 @@ msgstr "再びこのメッセージを表示しない(&M)"
 msgid "To make this message box visible again, press the Reset button on the Message Boxes page of the Options dialog."
 msgstr "このメッセージボックスを再度表示させたい場合は、[オプション] ダイアログのメッセージボックス ページで [リセット] ボタンを押してください。"
 
+msgid "Compare/Merge"
+msgstr "比較/マージ"
+
 msgid "Syntax"
 msgstr "シンタックス"
 
@@ -2312,13 +2465,13 @@ msgid "Do not expand"
 msgstr "展開しない"
 
 msgid "Expand all subfolders"
-msgstr "すべてのサブフォルダを展開"
+msgstr "すべてのサブフォルダーを展開"
 
 msgid "Expand different subfolders"
-msgstr "差異のあるサブフォルダを展開"
+msgstr "差異のあるサブフォルダーを展開"
 
 msgid "Expand identical subfolders"
-msgstr "同一のサブフォルダを展開"
+msgstr "同一のサブフォルダーを展開"
 
 msgid "File Type"
 msgstr "ファイル タイプ"
@@ -3829,8 +3982,8 @@ msgstr "Webページ(&B)"
 msgid "W&rap Text"
 msgstr "折り返して全体を表示(&R)"
 
-msgid "Frhed is not installed."
-msgstr "Frhed がインストールされていません。"
+msgid "%1 is not installed."
+msgstr "%1 がインストールされていません。"
 
 #, c-format
 msgid "%1 does not exist. Do you want to create it?"
@@ -4048,6 +4201,10 @@ msgstr "プラグイン パイプラインにプラグイン名が指定され�
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr "プラグイン パイプラインが引用符で閉じていません: %1"
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr "プラグイン名 '%1' は既に存在しています。"
+
 msgid "Specify plugin arguments"
 msgstr "プラグイン引数を指定してください"
 
@@ -4066,6 +4223,56 @@ msgstr "'%1'は比較前処理プラグインではありません"
 #, c-format
 msgid "An error occurred while prediffing the file '%1' with the plugin '%2'. The prediffing is not applied any more."
 msgstr "プラグイン'%2'でファイル'%1'の比較前処理を実行中にエラーが発生しました。比較前処理は適用されませんでした。"
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr "プラグインパイプラインに循環参照があります: %1"
+
+msgid "URL Handler"
+msgstr "URL処理プラグイン"
+
+msgid "File Unpacker"
+msgstr "ファイル展開プラグイン"
+
+msgid "File or Folder Unpacker"
+msgstr "ファイルまたはフォルダー展開プラグイン"
+
+msgid "Alias for Unpacker"
+msgstr "展開プラグインのエイリアス"
+
+msgid "Alias for Prediffer"
+msgstr "比較前処理プラグインのエイリアス"
+
+msgid "Alias for Editor script"
+msgstr "エディタースクリプトのエイリアス"
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr "プラグインパイプライン '%1' のエイリアス"
+
+msgid "New plugin description"
+msgstr "新しいプラグインの説明"
+
+msgid "All"
+msgstr "すべて"
+
+msgid "1st"
+msgstr "1番目"
+
+msgid "2nd"
+msgstr "2番目"
+
+msgid "3rd"
+msgstr "3番目"
+
+msgid "1st and 2nd"
+msgstr "1番目と2番目"
+
+msgid "1st and 3rd"
+msgstr "1番目と3番目"
+
+msgid "2nd and 3rd"
+msgstr "2番目と3番目"
 
 msgid "Filter applied"
 msgstr "フィルター適用"
@@ -4132,6 +4339,88 @@ msgstr "比較しています..."
 msgid "Zoom:"
 msgstr "拡大率:"
 
+msgid "Diff hunk"
+msgstr "差異ブロック"
+
+msgid "Inline diff"
+msgstr "行内差異"
+
+msgid "Line"
+msgstr "行"
+
+msgid "Character"
+msgstr "文字"
+
+msgid ""
+"\n"
+"Previous Difference (Alt+Up)\n"
+"(Right Button+Wheel Up)\n"
+"(Alt+Wheel Up)"
+msgstr ""
+"\n"
+"前の差異(&P)\tAlt+Up\n"
+"(Right Button+Wheel Up)\n"
+"(Alt+Wheel Up)"
+
+msgid ""
+"\n"
+"Next Difference (Alt+Down)\n"
+"(Right Button+Wheel Down)\n"
+"(Alt+Wheel Down)"
+msgstr ""
+"\n"
+"次の差異 (Alt+Down)\n"
+"(Right Button+Wheel Down)\n"
+"(Alt+Wheel Down)"
+
+msgid ""
+"\n"
+"Copy to Right (Alt+Right)\n"
+"(Right Button+Wheel Right)\n"
+"(Alt+Wheel Right)\n"
+"(Alt+Shift+Wheel Down)"
+msgstr ""
+"\n"
+"右側にコピー (Alt+Right)\n"
+"(Right Button+Wheel Right)\n"
+"(Alt+Wheel Right)\n"
+"(Alt+Shift+Wheel Down)"
+
+msgid ""
+"\n"
+"Copy to Left (Alt+Left)\n"
+"(Right Button+Wheel Left)\n"
+"(Alt+Wheel Left)\n"
+"(Alt+Shift+Wheel Up)"
+msgstr ""
+"\n"
+"左側へコピー (Alt+Left)\n"
+"(Right Button+Wheel Left)\n"
+"(Alt+Wheel Left)\n"
+"(Alt+Shift+Wheel Up)"
+
+msgid ""
+"\n"
+"Copy to Right and Advance (Ctrl+Alt+Right)\n"
+"(Ctrl+Alt+Wheel Right)\n"
+"(Ctrl+Alt+Shift+Wheel Down)"
+msgstr ""
+"\n"
+"右側へコピーし次へ (Ctrl+Alt+Right)\n"
+"(Ctrl+Alt+Wheel Right)\n"
+"(Ctrl+Alt+Shift+Wheel Down)"
+
+msgid ""
+"\n"
+"Copy to Left and Advance (Ctrl+Alt+Left)\n"
+"(Ctrl+Alt+Wheel Left)\n"
+"(Ctrl+Alt+Shift+Wheel Up)"
+msgstr ""
+"\n"
+"左側へコピーし次へ (Ctrl+Alt+Left)\n"
+"(Ctrl+Alt+Wheel Left)\n"
+"(Ctrl+Alt+Shift+Wheel Up)"
+
 msgid "Prettification"
 msgstr "整形"
 
@@ -4152,6 +4441,9 @@ msgstr "逆コンパイル"
 
 msgid "URL Handling"
 msgstr "URL 処理"
+
+msgid "Decoding / Encoding"
+msgstr "デコード / エンコード"
 
 msgid "Make Uppercase"
 msgstr "大文字に変換"
@@ -4267,6 +4559,12 @@ msgstr "IL コード逆アセンブル"
 msgid "Disassemble Native Code"
 msgstr "ネイティブ コード逆アセンブル"
 
+msgid "Convert Text with AI..."
+msgstr "AIテキスト変換..."
+
+msgid "Unescape Java properties files"
+msgstr "Java プロパティファイルをアンエスケープ"
+
 msgid "Make characters uppercase"
 msgstr "テキストを大文字に変換します"
 
@@ -4294,17 +4592,21 @@ msgstr "行を逆順にします"
 msgid ""
 "Replace text with another text.\r\n"
 "Usage: Replace [-i] [-e] FIND REPLACE\r\n"
+"   or: Replace -s\r\n"
 "  FIND    - text to find\r\n"
 "  REPLACE - text to replace\r\n"
 "  -i - ignore case (only for -e)\r\n"
-"  -e - treat the specified text as a regular expression"
+"  -e - treat the specified text as a regular expression\r\n"
+"  -s - replace using Substitution Filters patterns"
 msgstr ""
 "テキストを置換します。\r\n"
 "使い方: Replace [-i] [-e] FIND REPLACE\r\n"
+"または: Replace -s\r\n"
 "  FIND    - 検索するテキスト\r\n"
 "  REPLACE - 置換するテキスト\r\n"
 "  -i - 大文字小文字を無視します (-e 指定時のみ有効)\r\n"
-"  -e - 指定したテキストを正規表現として扱います"
+"  -e - 指定したテキストを正規表現として扱います\r\n"
+"  -s - 置換フィルタに登録されているパターンを使用して置換します"
 
 #, c-format
 msgid ""
@@ -4510,8 +4812,8 @@ msgstr "このプラグインは、テキストファイル（例：NCファイ�
 msgid "Prediff Line Filter"
 msgstr "比較前処理置換フィルター"
 
-msgid "Basic text functions for the context menu"
-msgstr "基本的なテキスト処理"
+msgid "Date and time insertion function"
+msgstr "日付または時刻の挿入機能"
 
 msgid ""
 "HTTP URL Scheme Handler with curl. \r\n"
@@ -4526,6 +4828,22 @@ msgid ""
 msgstr ""
 "Windows レジストリ URL スキーマを処理します。\r\n"
 "引数: reg.exe コマンドに渡すコマンドライン オプション"
+
+msgid "Basic text functions"
+msgstr "基本的なテキスト処理"
+
+msgid "AI-assisted text conversion functions"
+msgstr "AIによるテキスト変換機能"
+
+msgid ""
+"Text converter using OpenAI API.\r\n"
+"Usage: AIConvertText PROMPT"
+msgstr ""
+"OpenAI APIを使用してテキストを変換します。\r\n"
+"使い方: AIConvertText PROMPT"
+
+msgid "Unescape and display escaped Java properties files."
+msgstr "エスケープされたJavaプロパティファイルをエスケープ解除して表示します。"
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
 msgstr "CompareMSExcelFiles.sct WinMerge プラグインオプション"
@@ -4658,12 +4976,46 @@ msgstr "patch コマンドへ渡す引数を指定してください"
 #, c-format
 msgid "Enter the name of the folder to which the patch '%1' will be applied"
 msgstr ""
-"パッチ '%1' を適用するフォルダを指定してください\r\n"
+"パッチ '%1' を適用するフォルダーを指定してください\r\n"
 "(※ 指定したフォルダ内のファイルを一時フォルダにコピーし、一時フォルダ側のファイルにパッチを適用します)"
 
 #, c-format
 msgid "Folder '%1' does not exist"
-msgstr "フォルダ'%1' は存在しません"
+msgstr "フォルダー'%1' は存在しません"
 
 msgid "Do not specify the '-p0' command line option for the patch file which includes absolute paths"
 msgstr "絶対パスが含まれているパッチファイルに '-p0' オプションが指定されました。このまま実行するとパッチが一時ファイルではなく、元ファイルに適用されてしまう可能性があるため、中止します。"
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr "AI.sct WinMerge プラグイン オプション"
+
+msgid "Enter prompt"
+msgstr "プロンプトを入力してください"
+
+#, c-format
+msgid ""
+"Enter your OpenAI API key.\r\n"
+" - Use of this plugin requires registration with OpenAI and incurs fees.\r\n"
+" - The API key is stored in the environment variable %1."
+msgstr ""
+"OpenAI API キーを入力してください。\r\n"
+" ※ このプラグインを利用するには、OpenAIへの登録が必要であり、料金がかかります。\r\n"
+" ※ API キーは環境変数 %1 に保存されます。"
+
+msgid "Environment variable name for OpenAI API key"
+msgstr "OpenAI API キーを格納する環境変数名"
+
+msgid "OpenAI API key"
+msgstr "OpenAI API キー"
+
+msgid "Temperature"
+msgstr "Temperature"
+
+msgid "Maximum length"
+msgstr "Maximum length"
+
+msgid "Model"
+msgstr "モデル"
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
+msgstr "OpenAI APIキーが変更されました。 変更を適用するには、WinMerge を再起動してください。"

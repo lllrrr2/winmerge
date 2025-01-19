@@ -49,6 +49,7 @@
 #include "SyntaxColors.h"
 #include "Shell.h"
 #include "DirTravel.h"
+#include "MouseHook.h"
 #include <numeric>
 #include <functional>
 
@@ -100,6 +101,7 @@ CDirView::CDirView()
 		, m_pColItems(nullptr)
 		, m_nActivePane(-1)
 		, m_nExpandSubdirs(DO_NOT_EXPAND)
+		, m_bUserCancelEdit(false)
 {
 	m_dwDefaultStyle &= ~LVS_TYPEMASK;
 	// Show selection all the time, so user can see current item even when
@@ -374,6 +376,7 @@ BEGIN_MESSAGE_MAP(CDirView, CListView)
 	ON_COMMAND(ID_DIR_COPY_ALL_DISP_COLUMNS, OnCopyAllDisplayedColumns)
 	ON_UPDATE_COMMAND_UI(ID_DIR_COPY_ALL_DISP_COLUMNS, OnUpdateCopyAllDisplayedColumns)
 	// Status bar
+	ON_NOTIFY(NM_CLICK, AFX_IDW_CONTROLBAR_FIRST+30, OnStatusBarClick)
 	ON_UPDATE_COMMAND_UI(ID_STATUS_DIFFNUM, OnUpdateStatusNum)
 	ON_UPDATE_COMMAND_UI(ID_STATUS_RIGHTDIR_RO, OnUpdateStatusRightRO)
 	ON_UPDATE_COMMAND_UI(ID_STATUS_MIDDLEDIR_RO, OnUpdateStatusMiddleRO)
@@ -543,9 +546,11 @@ void CDirView::ReloadColumns()
  * @param [in] level Indent level
  * @param [in,out] index Index of the item to be inserted.
  * @param [in,out] alldiffs Number of different items
+ * @return returns -1 if the comparison of some items was interrupted or an error occurred
  */
-void CDirView::RedisplayChildren(DIFFITEM *diffpos, int level, UINT &index, int &alldiffs)
+int CDirView::RedisplayChildren(DIFFITEM *diffpos, int level, UINT &index, int &alldiffs)
 {
+	int result = 0;
 	const CDiffContext &ctxt = GetDiffContext();
 	while (diffpos != nullptr)
 	{
@@ -554,6 +559,8 @@ void CDirView::RedisplayChildren(DIFFITEM *diffpos, int level, UINT &index, int 
 
 		if (di.diffcode.isResultDiff() || (!di.diffcode.existAll() && !di.diffcode.isResultFiltered()))
 			++alldiffs;
+		if (di.diffcode.isResultError() || di.diffcode.isResultAbort())
+			result = -1;
 
 		bool bShowable = IsShowable(ctxt, di, m_dirfilter);
 		if (bShowable)
@@ -565,7 +572,10 @@ void CDirView::RedisplayChildren(DIFFITEM *diffpos, int level, UINT &index, int 
 				if (di.HasChildren())
 				{
 					if (di.customFlags & ViewCustomFlags::EXPANDED)
-						RedisplayChildren(ctxt.GetFirstChildDiffPosition(curdiffpos), level + 1, index, alldiffs);
+					{
+						if (RedisplayChildren(ctxt.GetFirstChildDiffPosition(curdiffpos), level + 1, index, alldiffs) < 0)
+							result = -1;
+					}
 				}
 			}
 			else
@@ -577,13 +587,15 @@ void CDirView::RedisplayChildren(DIFFITEM *diffpos, int level, UINT &index, int 
 				}
 				if (di.HasChildren())
 				{
-					RedisplayChildren(ctxt.GetFirstChildDiffPosition(curdiffpos), level + 1, index, alldiffs);
+					if (RedisplayChildren(ctxt.GetFirstChildDiffPosition(curdiffpos), level + 1, index, alldiffs) < 0)
+						result = -1;
 				}
 			}
 		}
 	}
 	m_firstDiffItem.reset();
 	m_lastDiffItem.reset();
+	return result;
 }
 
 /**
@@ -615,9 +627,9 @@ void CDirView::Redisplay()
 
 	int alldiffs = 0;
 	DIFFITEM *diffpos = ctxt.GetFirstDiffPosition();
-	RedisplayChildren(diffpos, 0, cnt, alldiffs);
-	if (pDoc->m_diffThread.GetThreadState() == CDiffThread::THREAD_COMPLETED)
-		GetParentFrame()->SetLastCompareResult(alldiffs);
+	const int result = RedisplayChildren(diffpos, 0, cnt, alldiffs);
+	const unsigned int threadState = pDoc->m_diffThread.GetThreadState();
+	GetParentFrame()->SetLastCompareResult((threadState != CDiffThread::THREAD_COMPLETED || result < 0) ? -1 : alldiffs);
 	SortColumnsAppropriately();
 	SetRedraw(TRUE);
 	m_pList->SetItemCount(static_cast<int>(m_listViewItems.size()));
@@ -629,6 +641,8 @@ void CDirView::Redisplay()
  */
 void CDirView::OnContextMenu(CWnd*, CPoint point)
 {
+	if (CMouseHook::IsRightWheelScrolling())
+		return;
 	if (GetListCtrl().GetItemCount() == 0)
 		return;
 	// Make sure window is active
@@ -1021,6 +1035,8 @@ void CDirView::PerformActionList(FileActionScript & actionScript)
 	theApp.RemoveOperation();
 	if (!succeeded && !actionScript.IsCanceled())
 		throw FileOperationException(_T("File operation failed"));
+	m_firstDiffItem.reset();
+	m_lastDiffItem.reset();
 }
 
 /**
@@ -1252,6 +1268,8 @@ void CDirView::ExpandSubdir(int sel, bool bRecursive)
 
 	m_pList->SetRedraw(FALSE);	// Turn off updating (better performance)
 
+	size_t oldItemCount = m_listViewItems.size();
+
 	CDiffContext &ctxt = GetDiffContext();
 	dip.customFlags |= ViewCustomFlags::EXPANDED;
 	if (bRecursive)
@@ -1264,8 +1282,18 @@ void CDirView::ExpandSubdir(int sel, bool bRecursive)
 
 	SortColumnsAppropriately();
 
+	if (m_pList->GetNextItem(sel, LVNI_SELECTED) != -1)
+	{
+		LVITEM lvi {0, sel + 1};
+		for (size_t i = 0; i < m_listViewItems.size() - oldItemCount; i++)
+			m_pList->InsertItem(&lvi);
+	}
+	else
+	{
+		m_pList->SetItemCountEx(static_cast<int>(m_listViewItems.size()), LVSICF_NOSCROLL);
+	}
+
 	m_pList->SetRedraw(TRUE);	// Turn updating back on
-	m_pList->SetItemCountEx(static_cast<int>(m_listViewItems.size()), LVSICF_NOSCROLL);
 	m_pList->Invalidate();
 }
 
@@ -3580,11 +3608,15 @@ void CDirView::OnODFindItem(NMHDR* pNMHDR, LRESULT* pResult)
 		for (size_t i = pFindItem->iStart; i < m_listViewItems.size(); ++i)
 		{
 			DIFFITEM *di = GetItemKey(static_cast<int>(i));
-			String filename = strutils::makelower(di->diffFileInfo[0].filename);
-			if (di && tc::tcsncmp(text.c_str(), filename.c_str(), text.length()) == 0)
+			if (di && !IsDiffItemSpecial(di))
 			{
-				*pResult = i;
-				return;
+				String filename = strutils::makelower(di->diffFileInfo[0].filename);
+
+				if (tc::tcsncmp(text.c_str(), filename.c_str(), text.length()) == 0)
+				{
+					*pResult = i;
+					return;
+				}
 			}
 		}
 	}
@@ -4385,6 +4417,50 @@ void CDirView::OnBeginDrag(NMHDR* pNMHDR, LRESULT* pResult)
 	}
 
 	*pResult = 0;
+}
+
+void CDirView::OnStatusBarClick(NMHDR* pNMHDR, LRESULT* pResult)
+{
+	*pResult = 0;
+	LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
+	switch (pNMItemActivate->iItem)
+	{
+	case 0:
+		break;
+	case 1:
+	{
+		CPoint point;
+		::GetCursorPos(&point);
+		CMenu menu;
+		VERIFY(menu.LoadMenu(IDR_POPUP_DIRVIEW_COMPAREMETHOD));
+		theApp.TranslateMenu(menu.m_hMenu);
+		menu.GetSubMenu(0)->CheckMenuRadioItem(ID_DIFF_OPTIONS_COMPMETHOD_FULL_CONTENTS, ID_DIFF_OPTIONS_COMPMETHOD_SIZE, 
+			ID_DIFF_OPTIONS_COMPMETHOD_FULL_CONTENTS + GetOptionsMgr()->GetInt(OPT_CMP_METHOD), MF_BYCOMMAND);
+		int nID = menu.GetSubMenu(0)->TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON | TPM_RETURNCMD, point.x, point.y, this);
+		if (nID != 0)
+		{
+			GetOptionsMgr()->SaveOption(OPT_CMP_METHOD, nID - ID_DIFF_OPTIONS_COMPMETHOD_FULL_CONTENTS);
+			m_pSavedTreeState.reset(SaveTreeState(GetDiffContext()));
+			GetDocument()->Rescan();
+		}
+		break;
+	}
+	case 2:
+	{
+		GetMainFrame()->SelectFilter();
+		break;
+	}
+	case 3:
+	case 4:
+	case 5:
+	{
+		const int index = std::clamp(pNMItemActivate->iItem - 3, 0, GetDocument()->m_nDirs - 1);
+		GetDocument()->SetReadOnly(index, !GetDocument()->GetReadOnly(index));
+		break;
+	}
+	default:
+		break;
+	}
 }
 
 /// Assign column name, using string resource & current column ordering

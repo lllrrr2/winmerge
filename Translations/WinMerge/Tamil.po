@@ -60,6 +60,18 @@ msgstr "தேர்ந்தெடுக்கப்பட்ட வரி(க�
 msgid "Copy Selected Line(s) from Left"
 msgstr "இடமிருந்து தேர்ந்தெடுக்கப்பட்ட வரி(களை) நகலெடுக்கவும்"
 
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr ""
+
 msgid "Select Line &Difference\tF4"
 msgstr "வரி &வேறுபாடு\tF4 தேர்ந்தெடு"
 
@@ -215,6 +227,15 @@ msgstr "&பின்னணி நிறத்தை அமைக்கவும
 msgid "&Vector Image Scaling"
 msgstr "&வெக்டர் பட அளவிடுதல்"
 
+msgid "&Animation Settings"
+msgstr ""
+
+msgid "&Blink interval"
+msgstr ""
+
+msgid "&Overlay animation interval"
+msgstr ""
+
 msgid "Compare Extracted &Text From Images"
 msgstr "படங்களிலிருந்து பிரித்தெடுக்கப்பட்ட &உரையை ஒப்பிடு"
 
@@ -335,11 +356,23 @@ msgstr "&விருப்பங்கள்..."
 msgid "&View"
 msgstr "&பார்வை"
 
+msgid "Ta&b Bar"
+msgstr "Ta&b Bar"
+
+msgid "&View Tab Bar"
+msgstr ""
+
+msgid "&On Title Bar"
+msgstr ""
+
 msgid "&Toolbar"
 msgstr "&கருவிப்பட்டி"
 
 msgid "&Small"
 msgstr "&சிறியது"
+
+msgid "&Medium"
+msgstr ""
 
 msgid "&Big"
 msgstr "&பெரிய"
@@ -347,11 +380,11 @@ msgstr "&பெரிய"
 msgid "&Huge"
 msgstr "&பெரிய"
 
+msgid "Men&u Bar"
+msgstr ""
+
 msgid "&Status Bar"
 msgstr "&நிலைப் பட்டி"
-
-msgid "Ta&b Bar"
-msgstr "Ta&b Bar"
 
 msgid "&Tools"
 msgstr "&கருவிகள்"
@@ -839,6 +872,12 @@ msgstr "முன்&வேறுபடுத்து..."
 msgid "&Transform with editor script..."
 msgstr "&எடிட்டர் ஸ்கிரிப்ட் மூலம் மாற்றவும்..."
 
+msgid "Scripts for &copying"
+msgstr ""
+
+msgid "Select &editor script..."
+msgstr ""
+
 msgid "Sp&lit"
 msgstr "ஸ்பி&லிட்"
 
@@ -1060,6 +1099,9 @@ msgstr "எண்&பெர்களை புறக்கணிக்கவு�
 msgid "Ignore c&omment differences"
 msgstr "க&கருத்து வேறுபாடுகளை புறக்கணிக்கவும்"
 
+msgid "Ignore &missing trailing EOL"
+msgstr ""
+
 msgid "&Include subfolders"
 msgstr "&உள்கோப்புகளை சேர்"
 
@@ -1086,6 +1128,81 @@ msgstr "அளவு"
 
 msgid "&Load Project..."
 msgstr "&திட்டத்தை ஏற்று..."
+
+msgid "${*} - All arguments"
+msgstr ""
+
+msgid "${1} - The first argument"
+msgstr ""
+
+msgid "${2} - The second argument"
+msgstr ""
+
+msgid "${3} - The third argument"
+msgstr ""
+
+msgid "${4} - The fourth argument"
+msgstr ""
+
+msgid "${5} - The fifth argument"
+msgstr ""
+
+msgid "${6} - The sixth argument"
+msgstr ""
+
+msgid "${7} - The seventh argument"
+msgstr ""
+
+msgid "${8} - The eighth argument"
+msgstr ""
+
+msgid "${9} - The ninth argument"
+msgstr ""
+
+msgid "${SRC_FILE} - Source file"
+msgstr ""
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr ""
+
+msgid "${SRC_URL} - Source URL"
+msgstr ""
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr ""
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr ""
+
+msgid "${DST_FILE} - Destination file"
+msgstr ""
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr ""
+
+msgid "${DST_URL} - Destination URL"
+msgstr ""
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr ""
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr ""
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr ""
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr ""
+
+msgid "Add &unpacker plugin..."
+msgstr ""
+
+msgid "Add &prediffer plugin..."
+msgstr ""
+
+msgid "&Duplicate plugin..."
+msgstr ""
 
 msgid "About WinMerge"
 msgstr "WinMerge பற்றி"
@@ -1197,6 +1314,9 @@ msgstr ""
 
 msgid "Language:"
 msgstr "மொழி:"
+
+msgid "Defaults"
+msgstr "இயல்புநிலைகள்"
 
 msgid "Find"
 msgstr "கண்டுபிடி"
@@ -1342,6 +1462,66 @@ msgstr "சொல் வேறுபாடு:"
 msgid "Selected Word Diff:"
 msgstr "தேர்ந்தெடுக்கப்பட்ட வார்த்தை வேறுபாடு:"
 
+msgid "Dialog"
+msgstr "உரையாடல்"
+
+msgid "Keywords:"
+msgstr "திறவுச்சொற்கள்:"
+
+msgid "Function names:"
+msgstr "செயல்பாடு பெயர்கள்:"
+
+msgid "Comments:"
+msgstr "கருத்துகள்:"
+
+msgid "Numbers:"
+msgstr "எண்கள்:"
+
+msgid "Operators:"
+msgstr "ஆபரேட்டர்கள்:"
+
+msgid "Strings:"
+msgstr "சரங்கள்:"
+
+msgid "Preprocessor:"
+msgstr "முன்செயலி:"
+
+msgid "User 1:"
+msgstr "பயனர் 1:"
+
+msgid "User 2:"
+msgstr "பயனர் 2:"
+
+msgid "Bold"
+msgstr "தடித்த"
+
+msgid "&Use customized text colors"
+msgstr "&பிரத்தியேகப்படுத்தப்பட்ட உரை வண்ணங்களைப் பயன்படுத்தவும்"
+
+msgid "Whitespace:"
+msgstr "வெள்ளைவெளி:"
+
+msgid "Regular text:"
+msgstr "வழக்கமான உரை:"
+
+msgid "Selection:"
+msgstr "தேர்வு:"
+
+msgid "Margin:"
+msgstr "விளிம்பு:"
+
+msgid "Search Marker:"
+msgstr "தேடல் குறிப்பான்:"
+
+msgid "User Defined Marker1:"
+msgstr "பயனர் வரையறுக்கப்பட்ட மார்க்கர்1:"
+
+msgid "User Defined Marker2:"
+msgstr "பயனர் வரையறுக்கப்பட்ட மார்க்கர்2:"
+
+msgid "User Defined Marker3:"
+msgstr "பயனர் வரையறுக்கப்பட்ட மார்க்கர்3:"
+
 msgid "&Use folder compare colors"
 msgstr "நிறங்களை ஒப்பிட்டு கோப்புறையை பயன்படுத்தவும்"
 
@@ -1357,8 +1537,8 @@ msgstr "உருப்படிகள் அனைத்தும் இல்�
 msgid "Items filtered:"
 msgstr "வடிகட்டப்பட்ட உருப்படிகள்:"
 
-msgid "Margin:"
-msgstr "விளிம்பு:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
+msgstr ""
 
 msgid "System"
 msgstr "அமைப்பு"
@@ -1423,9 +1603,6 @@ msgstr "கட்டளை வரியைச் சேர்&செய்"
 msgid "Open to e&xternal editor"
 msgstr "மின்&புற எடிட்டருக்கு திற"
 
-msgid "Defaults"
-msgstr "இயல்புநிலைகள்"
-
 msgid "Display Columns"
 msgstr "காட்சி நெடுவரிசைகள்"
 
@@ -1441,20 +1618,14 @@ msgstr "&கூடுதல் பண்புகள்"
 msgid "Additional Properties"
 msgstr "கூடுதல் பண்புகள்"
 
-msgid "&>"
-msgstr "&>"
-
-msgid "&<"
-msgstr "&<"
-
-msgid "<<"
-msgstr "<<"
-
 msgid "Select Plugin"
 msgstr "செருகுநிரலை தேர்ந்தெடு"
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
 msgstr "சொருகி &பெயர்:"
+
+msgid "&Target files:"
+msgstr ""
 
 msgid "Extensions list:"
 msgstr "நீட்டிப்பு பட்டியல்:"
@@ -1471,11 +1642,11 @@ msgstr "எல்லா செருகுநிரல்களையும் �
 msgid "&Open files in the same window type after unpacking"
 msgstr "&திறந்த பிறகு அதே சாளர வகை கோப்புகளை திறக்கவும்"
 
-msgid "&Plugin Pipeline:"
-msgstr "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
+msgstr "&Plugin pipeline:"
 
-msgid "&Add pipe"
-msgstr "&குழாயைச் சேர்"
+msgid "&Alias..."
+msgstr ""
 
 msgid "Stop"
 msgstr "நிறுத்து"
@@ -1552,9 +1723,6 @@ msgstr "எடிட்டர்"
 msgid "&Highlight syntax"
 msgstr "&ஹைலைட் தொடரியல்"
 
-msgid "&Automatic rescan"
-msgstr "&தானியங்கு மறு ஆய்வு"
-
 msgid "&Preserve original EOL chars"
 msgstr "&அசல் EOL எழுத்துகளை பாதுகாக்கவும்"
 
@@ -1570,6 +1738,15 @@ msgstr "&செருகு தாவல்கள்"
 msgid "Insert &Spaces"
 msgstr "&இடைவெளிகளை செருகு"
 
+msgid "&Rendering Mode:"
+msgstr "&ரெண்டரிங் பயன்முறை:"
+
+msgid "&Automatic rescan"
+msgstr "&தானியங்கு மறு ஆய்வு"
+
+msgid "Copy &granularity for selected differences:"
+msgstr ""
+
 msgid "Line Difference Coloring"
 msgstr "கோடு வேறுபாடு வண்ணம்"
 
@@ -1584,9 +1761,6 @@ msgstr "&சொல்-நிலை:"
 
 msgid "W&ord break characters:"
 msgstr "W&ord முறிவு எழுத்துகள்:"
-
-msgid "&Rendering Mode:"
-msgstr "&ரெண்டரிங் பயன்முறை:"
 
 msgid "WinMerge allows hiding some common message boxes. Press the Reset button to make all message boxes visible again."
 msgstr "WinMerge சில பொதுவான செய்தி பெட்டிகளை மறைக்க அனுமதிக்கிறது. எல்லா செய்தி பெட்டிகளையும் மீண்டும் பார்க்க மீட்டமை பொத்தானை அழுத்தவும்."
@@ -1685,51 +1859,6 @@ msgstr "இறக்குமதி..."
 
 msgid "Export..."
 msgstr "ஏற்றுமதி..."
-
-msgid "Dialog"
-msgstr "உரையாடல்"
-
-msgid "Keywords:"
-msgstr "திறவுச்சொற்கள்:"
-
-msgid "Function names:"
-msgstr "செயல்பாடு பெயர்கள்:"
-
-msgid "Comments:"
-msgstr "கருத்துகள்:"
-
-msgid "Numbers:"
-msgstr "எண்கள்:"
-
-msgid "Operators:"
-msgstr "ஆபரேட்டர்கள்:"
-
-msgid "Strings:"
-msgstr "சரங்கள்:"
-
-msgid "Preprocessor:"
-msgstr "முன்செயலி:"
-
-msgid "User 1:"
-msgstr "பயனர் 1:"
-
-msgid "User 2:"
-msgstr "பயனர் 2:"
-
-msgid "Bold"
-msgstr "தடித்த"
-
-msgid "Search Marker:"
-msgstr "தேடல் குறிப்பான்:"
-
-msgid "User Defined Marker1:"
-msgstr "பயனர் வரையறுக்கப்பட்ட மார்க்கர்1:"
-
-msgid "User Defined Marker2:"
-msgstr "பயனர் வரையறுக்கப்பட்ட மார்க்கர்2:"
-
-msgid "User Defined Marker3:"
-msgstr "பயனர் வரையறுக்கப்பட்ட மார்க்கர்3:"
 
 msgid "Folder Compare Report"
 msgstr "கோப்புறை ஒப்பீட்டு அறிக்கை"
@@ -1878,18 +2007,6 @@ msgstr "&மேற்கோள்களில் புதிய வரிகள
 msgid "&Quote character:"
 msgstr "&மேற்கோள் எழுத்து:"
 
-msgid "&Use customized text colors"
-msgstr "&பிரத்தியேகப்படுத்தப்பட்ட உரை வண்ணங்களைப் பயன்படுத்தவும்"
-
-msgid "Whitespace:"
-msgstr "வெள்ளைவெளி:"
-
-msgid "Regular text:"
-msgstr "வழக்கமான உரை:"
-
-msgid "Selection:"
-msgstr "தேர்வு:"
-
 msgid "Backup Files"
 msgstr "காப்பு கோப்புகள்"
 
@@ -1946,6 +2063,9 @@ msgstr "செருகுகள்"
 
 msgid "&Enable plugins"
 msgstr "&செருகுநிரல்களை இயக்கு"
+
+msgid "Plugin &type:"
+msgstr ""
 
 msgid "File filters:"
 msgstr "கோப்பு வடிப்பான்கள்:"
@@ -2074,6 +2194,36 @@ msgstr "ஒவ்வொரு பலகத்திற்கும் தனி�
 
 msgid "&Hex View"
 msgstr "&ஹெக்ஸ் வியூ"
+
+msgid "Edit Plugin"
+msgstr ""
+
+msgid "&Category:"
+msgstr ""
+
+msgid "&Menu caption:"
+msgstr ""
+
+msgid "&Window type:"
+msgstr ""
+
+msgid "&Unpacked file extension:"
+msgstr ""
+
+msgid "&Require arguments"
+msgstr ""
+
+msgid "&Generate editor script"
+msgstr ""
+
+msgid "Command &line:"
+msgstr ""
+
+msgid "&Script file extension:"
+msgstr ""
+
+msgid "Script &body:"
+msgstr ""
 
 msgid "EXT"
 msgstr "EXT"
@@ -2215,6 +2365,9 @@ msgstr "இந்த &செய்தியை மீண்டும் கா�
 
 msgid "To make this message box visible again, press the Reset button on the Message Boxes page of the Options dialog."
 msgstr "இந்த செய்தி பெட்டியை மீண்டும் பார்க்க, விருப்பங்கள் உரையாடலின் செய்தி பெட்டிகள் பக்கத்தில் மீட்டமை பொத்தானை அழுத்தவும்."
+
+msgid "Compare/Merge"
+msgstr ""
 
 msgid "Syntax"
 msgstr "தொடரியல்"
@@ -3825,8 +3978,8 @@ msgstr "வலைப்பக்கம்"
 msgid "W&rap Text"
 msgstr ""
 
-msgid "Frhed is not installed."
-msgstr "Frhed நிறுவப்படவில்லை."
+msgid "%1 is not installed."
+msgstr "%1 நிறுவப்படவில்லை."
 
 #, c-format
 msgid "%1 does not exist. Do you want to create it?"
@@ -4044,6 +4197,10 @@ msgstr "சொருகி பைப்லைனில் சொருகி ப
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr "சொருகி பைப்லைனில் மேற்கோள் குறி காணவில்லை: %1"
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr ""
+
 msgid "Specify plugin arguments"
 msgstr "சொருகி வாதங்களைக் குறிப்பிடவும்"
 
@@ -4061,6 +4218,56 @@ msgstr ""
 
 #, c-format
 msgid "An error occurred while prediffing the file '%1' with the plugin '%2'. The prediffing is not applied any more."
+msgstr ""
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr ""
+
+msgid "URL Handler"
+msgstr ""
+
+msgid "File Unpacker"
+msgstr ""
+
+msgid "File or Folder Unpacker"
+msgstr ""
+
+msgid "Alias for Unpacker"
+msgstr ""
+
+msgid "Alias for Prediffer"
+msgstr ""
+
+msgid "Alias for Editor script"
+msgstr ""
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr ""
+
+msgid "New plugin description"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "1st"
+msgstr ""
+
+msgid "2nd"
+msgstr ""
+
+msgid "3rd"
+msgstr ""
+
+msgid "1st and 2nd"
+msgstr ""
+
+msgid "1st and 3rd"
+msgstr ""
+
+msgid "2nd and 3rd"
 msgstr ""
 
 msgid "Filter applied"
@@ -4128,6 +4335,36 @@ msgstr ""
 msgid "Zoom:"
 msgstr ""
 
+msgid "Diff hunk"
+msgstr ""
+
+msgid "Inline diff"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "Character"
+msgstr ""
+
+msgid "\nPrevious Difference (Alt+Up)\n(Right Button+Wheel Up)\n(Alt+Wheel Up)"
+msgstr ""
+
+msgid "\nNext Difference (Alt+Down)\n(Right Button+Wheel Down)\n(Alt+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Right (Alt+Right)\n(Right Button+Wheel Right)\n(Alt+Wheel Right)\n(Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left (Alt+Left)\n(Right Button+Wheel Left)\n(Alt+Wheel Left)\n(Alt+Shift+Wheel Up)"
+msgstr ""
+
+msgid "\nCopy to Right and Advance (Ctrl+Alt+Right)\n(Ctrl+Alt+Wheel Right)\n(Ctrl+Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left and Advance (Ctrl+Alt+Left)\n(Ctrl+Alt+Wheel Left)\n(Ctrl+Alt+Shift+Wheel Up)"
+msgstr ""
+
 msgid "Prettification"
 msgstr "அழகானமாக்கல்"
 
@@ -4148,6 +4385,9 @@ msgstr "தொகுப்பு"
 
 msgid "URL Handling"
 msgstr "URL கையாளுதல்"
+
+msgid "Decoding / Encoding"
+msgstr ""
 
 msgid "Make Uppercase"
 msgstr "பெரிய எழுத்தை உருவாக்கு"
@@ -4263,6 +4503,12 @@ msgstr "ஐஎல் குறியீட்டை பிரிக்கவு�
 msgid "Disassemble Native Code"
 msgstr "நேட்டிவ் குறியீட்டை பிரிக்கவும்"
 
+msgid "Convert Text with AI..."
+msgstr ""
+
+msgid "Unescape Java properties files"
+msgstr ""
+
 msgid "Make characters uppercase"
 msgstr "எழுத்துகளை பெரிய எழுத்தாக உருவாக்கு"
 
@@ -4287,20 +4533,16 @@ msgstr "தலைகீழ் நெடுவரிசைகள்"
 msgid "Reverse lines"
 msgstr "தலைகீழ் கோடுகள்"
 
-msgid ""
-"Replace text with another text.\r\n"
-"Usage: Replace [-i] [-e] FIND REPLACE\r\n"
-"  FIND    - text to find\r\n"
-"  REPLACE - text to replace\r\n"
-"  -i - ignore case (only for -e)\r\n"
-"  -e - treat the specified text as a regular expression"
+msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression\r\n  -s - replace using Substitution Filters patterns"
 msgstr ""
 "உரையை வேறொரு உரையுடன் மாற்றவும்.\r\n"
 "பயன்பாடு: [-i] மாற்றவும் [-e] மாற்றீட்டைக் கண்டுபிடி\r\n"
+"   or: Replace -s\r\n"
 "கண்டுபிடி - கண்டுபிடிக்க உரை\r\n"
 " REPLACE - பதிலாக உரை\r\n"
 " -i - புறக்கணிப்பு வழக்கை (-eக்கு மட்டும்)\r\n"
-" -e - குறிப்பிட்ட உரையை வழக்கமான வெளிப்பாடாகக் கருதுங்கள்"
+" -e - குறிப்பிட்ட உரையை வழக்கமான வெளிப்பாடாகக் கருதுங்கள்\r\n"
+" -s - replace using Substitution Filters patterns"
 
 #, c-format
 msgid ""
@@ -4500,8 +4742,8 @@ msgstr ""
 msgid "Prediff Line Filter"
 msgstr "பிரிடிஃப் வரி வடிகட்டி"
 
-msgid "Basic text functions for the context menu"
-msgstr "சூழல் மெனுவிற்கான அடிப்படை உரை செயல்பாடுகள்"
+msgid "Date and time insertion function"
+msgstr ""
 
 msgid ""
 "HTTP URL Scheme Handler with curl. \r\n"
@@ -4516,6 +4758,18 @@ msgid ""
 msgstr ""
 "Windows Registry URL Scheme Handler. \r\n"
 "வாதங்கள்: கட்டளை வரி விருப்பங்கள் reg.exe கட்டளைக்கு அனுப்பப்பட்டன."
+
+msgid "Basic text functions"
+msgstr ""
+
+msgid "AI-assisted text conversion functions"
+msgstr ""
+
+msgid "Text converter using OpenAI API.\r\nUsage: AIConvertText PROMPT"
+msgstr ""
+
+msgid "Unescape and display escaped Java properties files."
+msgstr ""
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
 msgstr ""
@@ -4647,4 +4901,32 @@ msgid "Folder '%1' does not exist"
 msgstr ""
 
 msgid "Do not specify the '-p0' command line option for the patch file which includes absolute paths"
+msgstr ""
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr ""
+
+msgid "Enter prompt"
+msgstr ""
+
+#, c-format
+msgid "Enter your OpenAI API key.\r\n - Use of this plugin requires registration with OpenAI and incurs fees.\r\n - The API key is stored in the environment variable %1."
+msgstr ""
+
+msgid "Environment variable name for OpenAI API key"
+msgstr ""
+
+msgid "OpenAI API key"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Maximum length"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
 msgstr ""
